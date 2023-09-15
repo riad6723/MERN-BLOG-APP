@@ -65,9 +65,21 @@
     margin-top: 10px;
     font-weight: 600;
     border-radius: 5px;
+    margin-right: 5px;
 }
 
 .writePost:hover{
     border: 1px solid rgb(0, 0, 0);
     background-color: rgb(134, 185, 148);
+}
+
+.writeCancel{
+    position: relative;
+    top: -124px;
+    left: 105px;
+}
+
+.writeCancel:hover{
+    border: 1px solid rgb(0, 0, 0);
+    background-color: rgb(211, 102, 102);
 }

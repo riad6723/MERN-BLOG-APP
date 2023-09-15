@@ -20,7 +20,7 @@ function Register() {
     formData.append('file', file)
 
     axios.post('http://localhost:5000/register', formData)
-    .then(res => history.push ('./login'))
+    .then(res => history.push ('/login'))
     .catch(err => console.log(err))
   }
 

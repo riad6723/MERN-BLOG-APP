@@ -1,4 +1,4 @@
-import {useParams } from 'react-router-dom'
+import {useParams, useHistory } from 'react-router-dom'
 import './Write.css'
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -10,6 +10,7 @@ function Update() {
   const { id } = useParams();
   const [user,setUser]=useState();
   const [file, setFile] = useState()
+  const history=useHistory();
 
   useEffect(() => {
     
@@ -42,6 +43,11 @@ function Update() {
       .catch(err => console.log(err))
   }
 
+  const handleClick=()=>{
+    console.log("acac");
+    history.push (`/post/${id}`);
+  }
+
   return (
     <div className="write">
       <div className="writeTop">
@@ -61,8 +67,9 @@ function Update() {
             placeholder=" Write your post...." className="writeArea" onChange={e => setDescription(e.target.value)}
           ></textarea>
           <input type="file" className="writeFile" placeholder="Select an image for your post"  onChange={e => setFile(e.target.files[0])}/>
-          <button className="writePost">Update</button>
+          <div style={{display:'flex'}}><button className="writePost">Update</button></div> 
         </form>
+        <button className="writePost writeCancel" onClick={handleClick}>Cancel</button>
 
       </div>
 
