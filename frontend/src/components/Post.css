@@ -60,6 +60,14 @@
     margin-top: 5px;
 }
 
+.postTime{
+    font-size: 0.75rem;
+    font-weight: 400;
+    position: relative;
+    left: 480px;
+    top: -50px;
+}
+
 .postAuthor{
     font-size: small;
     font-weight: 400;

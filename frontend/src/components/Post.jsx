@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import './Post.css'
 import {Link, useParams } from 'react-router-dom'
 import axios from "axios";
+import moment from 'moment'
 
 function Post() {
 
@@ -43,6 +44,7 @@ function Post() {
      <div className="postContent">
          <div className='postTop'>
             <p className='postTitle'>{post.title}</p>
+            <p className='postTime'>{moment(post.createdAt).fromNow()}</p>
             <p className='postAuthor'> <Link to={`/profile?author=${post.author}`}>{post.author}</Link></p>
           </div>
 
