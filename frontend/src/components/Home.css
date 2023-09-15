@@ -1,0 +1,73 @@
+.home{
+    height: 100%;
+    width: 100%;
+    padding: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.homeCard{
+    width: 400px;
+    height: 550px;
+    background-color: #f7f7f7;
+    border: 1px solid rgb(219, 219, 219);
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    box-shadow: 3px 3px 5px #666565, 0px 0px 0px #ffffff;
+    margin: 20px;
+}
+
+.homeCard:hover {
+    box-shadow: 4px 4px 6px #3f3e3e, -4px -4px 6px #3f3e3e;
+}
+
+.homeCardImage{
+    height: 200px;
+    width: inherit;
+    object-fit: cover;
+}
+
+.homeCardContent{
+    height: 250px;
+}
+
+.homeCardTop{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.homeCardTitle{
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+.homeCardAuthor{
+    font-size: small;
+    font-weight: 400;
+    font-style: italic;
+}
+.homeCardTime{
+    font-size: 0.75rem;
+    font-weight: 200;
+    position: relative;
+    top: -80px;
+    left: 150px;
+}
+
+.homeCardDesc{
+    font-size: medium;
+    font-weight: 500;
+    overflow: hidden; /* Hide any overflowing content */
+    text-overflow: ellipsis;
+    text-align: justify;
+    display: -webkit-box;
+    line-height: 1.5; /* Adjust line height for readability */
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    color: #444444;
+}

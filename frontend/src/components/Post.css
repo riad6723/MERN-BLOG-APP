@@ -1,0 +1,76 @@
+.post{
+    width: 80%;
+    height: 700px;
+    display: flex;
+    margin-left: 150px;
+    margin-top: 60px;
+    box-shadow: 3px 3px 5px #666565, 0px 0px 0px #ffffff;
+}
+
+.postLeft{
+    width: 30%;
+    height: inherit;
+    border: 1px solid black;
+}
+
+.postImage{
+    height: 60%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.postLinks{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40%;
+}
+
+.postLinks > span{
+    margin: 10px;
+    border: 1px solid #cabdbd;
+    background-color: lightcoral;
+    height: 50px;
+    width: 100px;
+    text-align: center;
+    padding-top: 11px;
+}
+
+.postLinks> span:hover{
+    border: 2px solid rgb(245, 244, 244);
+}
+
+.postContent{
+    display: flex;
+    flex-direction: column;
+}
+
+.postTop{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+    width: 1100px;
+}
+
+.postTitle{
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+.postAuthor{
+    font-size: small;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.postDesc{
+    width: 1100px;
+    height: 80%;
+    font-size: medium;
+    font-weight: 600;
+    margin: 10px;
+    text-align: justify;
+}

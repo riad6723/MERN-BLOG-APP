@@ -1,0 +1,74 @@
+.top{
+    display: flex;
+    background-color: rgb(240, 239, 239);
+    height: 50px;
+    position: sticky;
+}
+
+.topLeft, .topCenter, .topRight{
+    width: 25%;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.topLeft> span{
+    font-size: 26px;
+}
+
+.topCenter{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.navbarRoutes{
+    margin: 5px;
+    font-size: 20px;
+    position: relative;
+    left: 100px;
+}
+
+.navbarSearch{
+    position: relative;
+    left: 230px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbarIcon{
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.navbarSearchInput{
+    height: 30px;
+    width: auto;
+    background-color: whitesmoke;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+.navbarSearchInput:hover{
+    border: 2px solid black;
+    border-radius: 8px;
+}
+
+.topRight> span{
+    margin: 5px;
+    font-size: 20px;
+}
+
+.navbarImg{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
