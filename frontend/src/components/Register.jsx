@@ -19,7 +19,7 @@ function Register() {
     formData.append('password', password)
     formData.append('file', file)
 
-    axios.post('http://localhost:5000/register', formData)
+    axios.post('http://localhost:5000/api/user/register', formData)
     .then(res => history.push ('/login'))
     .catch(err => console.log(err))
   }

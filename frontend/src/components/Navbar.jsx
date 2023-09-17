@@ -14,7 +14,7 @@ function Navbar() {
   useEffect( ()=>{
     const loggedinUsername = localStorage.getItem('loggedinUsername');
     if(loggedinUsername){
-      axios.post(`http://localhost:5000/profilepic`,{username:loggedinUsername})
+      axios.post(`http://localhost:5000/api/find/profilepic`,{username:loggedinUsername})
       .then(result => {
         setProfilePic(result.data)
       })
@@ -31,7 +31,7 @@ function Navbar() {
   }
 
   const handleSearch=()=>{
-    axios.post('http://localhost:5000/search',{username:searchKey})
+    axios.post('http://localhost:5000/api/find/search',{username:searchKey})
     .then(result=>{
       if(result.data){
         history.push(`/profile?author=${searchKey}`);

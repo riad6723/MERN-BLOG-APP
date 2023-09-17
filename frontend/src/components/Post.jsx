@@ -12,7 +12,7 @@ function Post() {
   const [username,setUsername]=useState();
 
   useEffect(() => {
-    axios.get('http://localhost:5000/getpostbyid/'+id)
+    axios.get('http://localhost:5000/api/find/getpostbyid/'+id)
     .then(rslt => {
       setPost(rslt.data)
     })
@@ -26,7 +26,7 @@ function Post() {
 
   const handleClick= e =>{
 
-    axios.delete('http://localhost:5000/deletepost/'+id)
+    axios.delete('http://localhost:5000/api/find/deletepost/'+id)
     .then(result=>window.location.href='/')
     .catch(err=>console.log(err))
   }

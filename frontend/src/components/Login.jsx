@@ -10,10 +10,10 @@ function Login() {
 
   const handleSubmit= e =>{
     e.preventDefault()
-      axios.post('http://localhost:5000/username', {email:email})
+      axios.post('http://localhost:5000/api/find/username', {email:email})
       .then(result=>{
 
-        axios.post('http://localhost:5000/login', {username:result.data, password})
+        axios.post('http://localhost:5000/api/user/login', {username:result.data, password})
         .then(res => {
             if(res.data === "Success") {
               localStorage.setItem('loggedinUsername', result.data);

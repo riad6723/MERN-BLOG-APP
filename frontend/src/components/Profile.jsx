@@ -16,13 +16,13 @@ function Profile() {
   const queryParams = new URLSearchParams(location.search);
   setAuthor(queryParams.get('author'));
 
-  axios.post('http://localhost:5000/profilepic',{username:queryParams.get('author')})
+  axios.post('http://localhost:5000/api/find/profilepic',{username:queryParams.get('author')})
   .then(result=>{
     setProfilePic(result.data)
   })
   .catch(err=>console.log(err))
     
-    axios.post(`http://localhost:5000/getpostbyauthor`,{author:queryParams.get('author')})
+    axios.post(`http://localhost:5000/api/find/getpostbyauthor`,{author:queryParams.get('author')})
     .then(result => {
       setPosts(result.data)
     })

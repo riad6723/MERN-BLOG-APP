@@ -8,7 +8,7 @@ function Home() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/getposts')
+    axios.get('http://localhost:5000/api/find/getposts')
     .then(posts => {
       setPosts(posts.data)
     })

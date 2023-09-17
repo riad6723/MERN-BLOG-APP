@@ -14,7 +14,7 @@ function Update() {
 
   useEffect(() => {
     
-    axios.get('http://localhost:5000/getpostbyid/'+id)
+    axios.get('http://localhost:5000/api/find/getpostbyid/'+id)
     .then(rslt => {
       setTitle(rslt.data.title);
       setDescription(rslt.data.description);
@@ -34,7 +34,7 @@ function Update() {
       formData.append('file', file)
       console.log(user);
 
-      axios.put('http://localhost:5000/editpost/'+id, formData)
+      axios.put('http://localhost:5000/api/user/editpost/'+id, formData)
       .then(res => {
           if(res.data === "Success") {
               window.location.href = "/"
