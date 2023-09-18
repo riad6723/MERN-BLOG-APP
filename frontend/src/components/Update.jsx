@@ -10,12 +10,14 @@ function Update() {
   const { id } = useParams();
   const [user,setUser]=useState();
   const [file, setFile] = useState()
+  const [author, setAuthor] = useState()
   const history=useHistory();
 
   useEffect(() => {
     
     axios.get('http://localhost:5000/api/find/getpostbyid/'+id)
     .then(rslt => {
+      setAuthor(rslt.data.author);
       setTitle(rslt.data.title);
       setDescription(rslt.data.description);
     })
@@ -23,7 +25,7 @@ function Update() {
 
     const loggedinUsername = localStorage.getItem('loggedinUsername');
     if(loggedinUsername)setUser(loggedinUsername);
-  }, [id, user])
+  }, [])
 
   const handleSubmit = (e) => {
       e.preventDefault();
@@ -32,7 +34,6 @@ function Update() {
       formData.append('description', description)
       formData.append('username', user)
       formData.append('file', file)
-      console.log(user);
 
       axios.put('http://localhost:5000/api/user/editpost/'+id, formData)
       .then(res => {
@@ -44,11 +45,11 @@ function Update() {
   }
 
   const handleClick=()=>{
-    console.log("acac");
     history.push (`/post/${id}`);
   }
 
   return (
+    user===author?
     <div className="write">
       <div className="writeTop">
         <h1>Edit Post</h1>
@@ -74,6 +75,8 @@ function Update() {
       </div>
 
     </div>
+    :
+    null
   );
 }
 

@@ -30,10 +30,11 @@ function Navbar() {
     history.push('/');
   }
 
-  const handleSearch=()=>{
+  const handleSearch=(e)=>{
     axios.post('http://localhost:5000/api/find/search',{username:searchKey})
     .then(result=>{
       if(result.data){
+        e.target.value="";
         history.push(`/profile?author=${searchKey}`);
       }
       else{
@@ -42,6 +43,13 @@ function Navbar() {
     })
     .catch(err=>console.log(err))
   }
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleSearch(event);
+    }
+  };
+
 
   return (
   <div className="top">
@@ -54,7 +62,7 @@ function Navbar() {
       { user? <span><Link to="/write">Write</Link></span> : <></>}
       <span><Link to="/">Contact</Link></span>
     </div> 
-      <span className='navbarSearch'> <input className='navbarSearchInput' type="text" placeholder=' search authors....' value={searchKey} onChange={e=>setSearchKey(e.target.value)}/> <button onClick={handleSearch}> <i className='fa fa-search navbarIcon'> </i>  </button> </span>
+      <span className='navbarSearch'> <input className='navbarSearchInput' type="text" placeholder=' search authors....' value={searchKey} onChange={e=>setSearchKey(e.target.value)} onKeyPress={handleKeyPress}/> <button onClick={handleSearch}> <i className='fa fa-search navbarIcon'> </i>  </button> </span>
     </div>
     <div className="topRight">
       {
