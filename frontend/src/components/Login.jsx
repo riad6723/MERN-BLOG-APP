@@ -15,7 +15,9 @@ function Login() {
 
         axios.post('http://localhost:5000/api/user/login', {username:result.data, password})
         .then(res => {
-            if(res.data === "Success") {
+            if(res.data.status === "Success") {
+              console.log(res.data);
+              localStorage.setItem('token', res.data.token);
               localStorage.setItem('loggedinUsername', result.data);
               window.location.href="/";
             }

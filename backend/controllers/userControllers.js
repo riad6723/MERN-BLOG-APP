@@ -1,6 +1,7 @@
 const UserModel = require('../models/userModel')
 const PostModel = require('../models/postModel')
 const bcrypt = require('bcrypt')
+const jwt=require('jsonwebtoken')
 
 
 const handleRegister= (req, res) => {
@@ -15,18 +16,19 @@ const handleRegister= (req, res) => {
 
 const handleLogin= (req, res) => {
     const {username, password} = req.body;
+    const token=jwt.sign({username,password},process.env.SECRET_KEY);
     UserModel.findOne({username})
     .then(user => {
         if(user) {
             bcrypt.compare(password, user.password, (err, response) => {
                 if(response) {
-                    res.json("Success")
-                } else {console.log("incorrect");
-                    res.json("Password is incorrect");
+                    res.json({status:"Success",token:token})
+                } else {
+                    res.json({status:"failure",token:null});
                 }
             })
         } else {
-          res.json("User does not exist")
+          res.json({status:"user doesn't exist",token:null})
         }
     })
     .catch(err => res.json(err))

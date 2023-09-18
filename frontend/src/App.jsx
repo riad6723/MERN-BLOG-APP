@@ -17,7 +17,7 @@ function App() {
   useEffect(()=>{
     setUsername(localStorage.getItem('loggedinUsername'));
     console.log(username);
-  },[])
+  },[username])
 
   return (
     <div>
@@ -27,8 +27,8 @@ function App() {
       <Route exact path="/"> <Home /></Route>
       <Route path="/profile"> <Profile /></Route>
       <Route path="/write"> { username? <Write /> : <Invalid />} </Route>   
-      <Route path="/register"> { !username? <Register /> : <Home />}</Route>   
-      <Route path="/login"> { !username? <Login /> : <Home />}</Route> 
+      <Route path="/register">  <Register /></Route>   
+      <Route path="/login"> <Login /></Route> 
       <Route path="/post/:id"> <Post /></Route>  
       <Route path="/update/:id"> { username? <Update /> : <Invalid />}</Route>  
       <Route path="/*"> <Invalid /></Route>  

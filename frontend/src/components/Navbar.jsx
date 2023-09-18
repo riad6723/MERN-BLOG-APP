@@ -26,6 +26,7 @@ function Navbar() {
 
   const handleClick = ()=>{
     localStorage.removeItem('loggedinUsername');
+    localStorage.removeItem('token');
     setUser("");
     history.push('/');
   }

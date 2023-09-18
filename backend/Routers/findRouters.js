@@ -1,5 +1,6 @@
 const express=require('express')
 const router = express.Router();
+const {authenticateUser} = require('../middlewares/authentication')
 const {searchKey, profilePic, getposts, getUsernameFromEmail, getPostsForAuthor, getPostById,deletepost}=require('../controllers/findControllers')
 
 router.post('/search',searchKey);// matching searchkey
