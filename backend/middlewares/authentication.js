@@ -1,5 +1,9 @@
 const jwt=require('jsonwebtoken')
-const authenticateUser= (req,res,next)=>{
+const UserModel = require('../models/userModel')
+const PostModel = require('../models/postModel');
+const userModel = require('../models/userModel');
+
+const checkToken= (req,res,next)=>{
     const token=req.headers.token;
 
     if (!token) {
@@ -11,7 +15,7 @@ const authenticateUser= (req,res,next)=>{
         // Verify the token
         const decoded =jwt.verify(token, process.env.SECRET_KEY);
         // Attach the decoded user information to the request for further use
-        req.user = decoded;
+        req.user = decoded.username;
         next();
     } catch (err) {
         return res.status(401).json({ message: 'Unauthorized: Invalid token' });
@@ -19,6 +23,20 @@ const authenticateUser= (req,res,next)=>{
    
 }
 
+const checkUser= (req,res,next)=>{
+    const username=req.user;
+    
+    userModel.findOne({username})
+    .then(result=>{
+        if(result)next();
+        else return res.status(401).json({ message: 'Unauthorized: user does not exist' });
+    })
+    .catch(err=>{
+        return res.status(401).json({ message: 'Unauthorized: user does not exist' });
+    })
+}
+
 module.exports={
-    authenticateUser
+    checkToken,
+    checkUser
 }

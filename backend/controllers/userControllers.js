@@ -14,9 +14,12 @@ const handleRegister= (req, res) => {
     }).catch(err => console.log(err))
 }
 
-const handleLogin= (req, res) => {
+const handleLogin= async(req, res) => {
     const {username, password} = req.body;
-    const token=jwt.sign({username,password},process.env.SECRET_KEY);
+
+    try {
+    const hashedPassword= await bcrypt.hash(password,10); 
+    const token=jwt.sign({username,hashedPassword},process.env.SECRET_KEY);
     UserModel.findOne({username})
     .then(user => {
         if(user) {
@@ -32,6 +35,13 @@ const handleLogin= (req, res) => {
         }
     })
     .catch(err => res.json(err))
+
+    } 
+    catch (error) {
+      res.json(err);
+    }
+
+    
   }
 
   const handleWrite= (req, res) => {

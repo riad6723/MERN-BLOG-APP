@@ -1,5 +1,4 @@
-const UserModel = require('../models/userModel')
-const PostModel = require('../models/postModel')
+const {checkToken,checkUser} = require('../middlewares/authentication')
 const express=require('express')
 const router = express.Router();
 const {handleRegister, handleLogin,handleWrite,handleEdit}=require('../controllers/userControllers')
@@ -22,8 +21,8 @@ const path = require("path");
 
   router.post('/register',  upload.single('file'),handleRegister); // user registration
   router.post('/login', handleLogin); //user Login
-  router.post('/write', upload.single('file'),handleWrite); // creating a post
-  router.put('/editpost/:id', upload.single('file'),handleEdit);//editing single post by id
+  router.post('/write', checkToken, checkUser,upload.single('file'),handleWrite); // creating a post
+  router.put('/editpost/:id',  checkToken, checkUser, upload.single('file'),handleEdit);//editing single post by id
   
 
 module.exports={userRouters : router};

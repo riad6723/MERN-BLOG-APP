@@ -15,7 +15,7 @@ function Update() {
 
   useEffect(() => {
     
-    axios.get('http://localhost:5000/api/find/getpostbyid/'+id)
+    axios.get('http://localhost:5000/api/find/getpostbyid/'+id,{headers:{token:localStorage.getItem('token')}})
     .then(rslt => {
       setAuthor(rslt.data.author);
       setTitle(rslt.data.title);

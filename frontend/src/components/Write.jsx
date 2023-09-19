@@ -19,7 +19,7 @@ function Write() {
       formData.append('username', username)
       formData.append('file', file)
 
-      axios.post('http://localhost:5000/api/user/write', formData)
+      axios.post('http://localhost:5000/api/user/write', formData,{headers:{token:localStorage.getItem('token')}})
       .then(res => {
           if(res.data === "Success") {
               window.location.href = "/"
