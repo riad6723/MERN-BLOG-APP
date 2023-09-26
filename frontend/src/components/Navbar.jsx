@@ -9,6 +9,7 @@ function Navbar() {
   const [user,setUser]=useState();
   const history=useHistory();
   const [searchKey, setSearchKey]=useState();
+  const [searchKeyResults, setSearchKeyResults]=useState([]);
   const [profilePic,setProfilePic]=useState();
 
   useEffect( ()=>{
@@ -32,11 +33,14 @@ function Navbar() {
   }
 
   const handleSearch=(e)=>{
-    axios.post('http://localhost:5000/api/find/search',{username:searchKey})
+    if(e.target.value===""){
+      setSearchKeyResults([]);
+      return;
+    }
+    axios.post('http://localhost:5000/api/find/search',{username:e.target.value})
     .then(result=>{
       if(result.data){
-        e.target.value="";
-        history.push(`/profile?author=${searchKey}`);
+        setSearchKeyResults(result.data);
       }
       else{
         history.push(`/notfound`);
@@ -45,11 +49,11 @@ function Navbar() {
     .catch(err=>console.log(err))
   }
 
-  const handleKeyPress = (event) => {
-    if (event.key === 'Enter') {
-      handleSearch(event);
-    }
-  };
+  const handleSearchResultClick= (names)=>{
+    setSearchKeyResults([]);
+    setSearchKey('');
+    history.push(`/profile?author=${names.username}`);
+  }
 
 
   return (
@@ -63,7 +67,14 @@ function Navbar() {
       { user? <span><Link to="/write">Write</Link></span> : <></>}
       <span><Link to="/">Contact</Link></span>
     </div> 
-      <span className='navbarSearch'> <input className='navbarSearchInput' type="text" placeholder=' search authors....' value={searchKey} onChange={e=>setSearchKey(e.target.value)} onKeyPress={handleKeyPress}/> <button onClick={handleSearch}> <i className='fa fa-search navbarIcon'> </i>  </button> </span>
+      <span className='navbarSearch'> <input className='navbarSearchInput' type="text" placeholder=' search authors....' value={searchKey} onChange={e=>{setSearchKey(e.target.value);handleSearch(e)}}/> <button onClick={handleSearch}> <i className='fa fa-search navbarIcon'> </i>  </button> </span>
+      
+      <div className='navbarSearchResultsBox'>
+        {
+          searchKeyResults.map((names,key)=>{
+          return  <div key={key} className='navbarSearchResults' onClick={() => handleSearchResultClick(names)}>{names.username}</div>
+          })
+        }</div>
     </div>
     <div className="topRight">
       {

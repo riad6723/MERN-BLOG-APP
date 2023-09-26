@@ -4,8 +4,9 @@ const PostModel = require('../models/postModel')
 
 const searchKey=(req,res)=>{
     const {username}= req.body;
-    PostModel.findOne({author: username})
-    .then(result=>res.json(result))
+    const usernameRegex = new RegExp(`^${username}`, 'i');
+    UserModel.find({username: usernameRegex})
+    .then(result=>{ res.json(result)})
     .catch(err=>res.json(err))
   }
 

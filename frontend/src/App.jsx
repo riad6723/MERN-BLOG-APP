@@ -16,7 +16,6 @@ function App() {
 
   useEffect(()=>{
     setUsername(localStorage.getItem('loggedinUsername'));
-    console.log(username);
   },[username])
 
   return (

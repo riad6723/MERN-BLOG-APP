@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import './Post.css'
-import {Link, useParams } from 'react-router-dom'
+import {Link, useParams, useHistory } from 'react-router-dom'
 import axios from "axios";
 import moment from 'moment'
 
@@ -10,6 +10,7 @@ function Post() {
   const { id } = useParams();
   const[post , setPost]= useState({});
   const [username,setUsername]=useState();
+  const history=useHistory();
 
   useEffect(() => {
     axios.get('http://localhost:5000/api/find/getpostbyid/'+id)
@@ -32,14 +33,10 @@ function Post() {
   }
 
   return (
+    <>
     <div className="post">
       <div className="postLeft">
       <img src={`http://localhost:5000/Images/${post.file}`} alt="pic" className="postImage"/>
-      <div className="postLinks">
-        {username===post.author? ( <> <span><Link to={`/update/${id}`} >Update</Link></span>
-       <span><button onClick={handleClick}>Delete</button></span> </> ) : <></>}
-       
-      </div>
       </div>
      <div className="postContent">
          <div className='postTop'>
@@ -53,6 +50,12 @@ function Post() {
      </div>
 
     </div>
+    <div className="postControl">
+      {username===post.author? <> <i style={{color:"lightblue"}} className="fa-solid fa-pen postControlIcon" onClick={e=>{history.push(`/update/${id}`)}}> </i> <i className="fa-solid fa-trash postControlIcon" onClick={handleClick}></i> </> : 
+      <></>
+      }
+    </div>
+    </>
   );
 }
 

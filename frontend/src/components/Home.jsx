@@ -21,9 +21,9 @@ function Home() {
 
       {
         
-        posts.map( (post) => (
+        posts.map( (post, key) => (
         
-      <div class="homeCard">
+      <div class="homeCard" key={key}>
         <Link to={`/post/${post._id}`} className='home'>
             <img class="homeCardImage" src={`http://localhost:5000/Images/${post.file}`} alt='pic'/>
 

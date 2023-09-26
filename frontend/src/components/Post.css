@@ -14,31 +14,11 @@
 }
 
 .postImage{
-    height: 60%;
+    height: 100%;
     width: 100%;
     object-fit: cover;
 }
 
-.postLinks{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 40%;
-}
-
-.postLinks > span{
-    margin: 10px;
-    border: 1px solid #cabdbd;
-    background-color: lightcoral;
-    height: 50px;
-    width: 100px;
-    text-align: center;
-    padding-top: 11px;
-}
-
-.postLinks> span:hover{
-    border: 2px solid rgb(245, 244, 244);
-}
 
 .postContent{
     display: flex;
@@ -81,4 +61,20 @@
     font-weight: 600;
     margin: 10px;
     text-align: justify;
+}
+
+.postControl{
+    width: 10%;
+    height: 100px;
+    position: absolute;
+    left: 90%;
+    top: 7%;
+}
+
+
+.postControlIcon{
+    margin-top: 55px;
+    margin-right: 8px;
+    cursor: pointer;
+    color: lightsalmon;
 }
