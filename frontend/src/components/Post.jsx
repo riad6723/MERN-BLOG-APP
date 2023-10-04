@@ -33,8 +33,14 @@ function Post() {
   }
 
   return (
-    <>
-    <div className="post">
+
+    <div className="post--page">
+
+
+      {/*
+    <div className="postPage">
+
+      <div className="post">
       <div className="postLeft">
       <img src={`http://localhost:5000/Images/${post.file}`} alt="pic" className="postImage"/>
       </div>
@@ -50,12 +56,29 @@ function Post() {
      </div>
 
     </div>
-    <div className="postControl">
-      {username===post.author? <> <i style={{color:"lightblue"}} className="fa-solid fa-pen postControlIcon" onClick={e=>{history.push(`/update/${id}`)}}> </i> <i className="fa-solid fa-trash postControlIcon" onClick={handleClick}></i> </> : 
+    </div>*/
+    }
+      
+      <div className="post--top">
+      <div className="icon--box">
+      {username===post.author? <> <i style={{color:"lightblue"}} className="fa-solid fa-pen control--icon" onClick={e=>{history.push(`/update/${id}`)}}> </i> <i className="fa-solid fa-trash control--icon" onClick={handleClick}></i> </> : 
       <></>
       }
+      </div> 
+      <img src={`http://localhost:5000/Images/${post.file}`} alt="pic" className="image"/>
+      </div>
+
+      <div className="post--mid">
+        <h1 className="title">{post.title}</h1>
+        <h1 className='author'> <Link to={`/profile?author=${post.author}`}>By {post.author}</Link></h1>
+        <h1 className="time">{moment(post.createdAt).fromNow()}</h1>
+      </div>
+
+      <div className="post--bottom">
+        <h1 className="text">{post.description}</h1>
+      </div>
+
     </div>
-    </>
   );
 }
 

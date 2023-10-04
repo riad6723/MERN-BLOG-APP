@@ -40,7 +40,7 @@ function Profile() {
             <div className="profileDesc">
               <h6 className="profileName">{author}</h6>
               <h6 className="profileBlogs">{`Author of ${posts.length} blogs`}</h6>
-              <h6 className="profileSomething">something</h6>
+              <h6 className="profileSomething">Popularity 14</h6>
             </div>
           </div>
         </div>

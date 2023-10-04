@@ -7,32 +7,29 @@
 
 .profileTop{
     width: 100%;
-    height: 45%;
-    background: linear-gradient(to right, rgb(126, 84, 224), rgb(70, 160, 212));
+    height: 40vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0vw 15vw;
 }
 
 .profileCard{
-    width: 50%;
-    height: 400px;
+    width: 100%;
+    height: 40vh;
     background-color: rgb(243, 243, 248);
-    position: relative;
-    top: 30px;
-    left:26%;
     display: flex;
     border: 1px solid rgb(12, 12, 12);
-    border-radius: 10px;
 }
 
 .profilePic{
-    width: 50%;
+    width: 30%;
     height: inherit;
-    object-fit: cover;
     border-bottom: 1px solid rgb(12, 12, 12);
-    border-radius: 10px 0px 0px 10px;
 }
 
 .profileDesc{
-    width: 50%;
+    width: 70%;
     height: inherit;
     display: flex;
     justify-content: center;
@@ -68,7 +65,7 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
     margin-top: 100px;
 }
 

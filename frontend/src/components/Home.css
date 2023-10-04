@@ -1,7 +1,7 @@
 .home{
-    height: 100%;
+    height: auto;
     width: 100%;
-    padding: 50px;
+    padding: 70px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -9,7 +9,8 @@
 
 .homeCard{
     width: 400px;
-    height: 550px;
+    /* height: 550px; */
+    height: auto;
     background-color: #f7f7f7;
     border: 1px solid rgb(219, 219, 219);
     display: flex;
@@ -30,7 +31,7 @@
 }
 
 .homeCardContent{
-    height: 250px;
+    height: auto;
 }
 
 .homeCardTop{
@@ -49,7 +50,7 @@
 .homeCardAuthor{
     font-size: small;
     font-weight: 400;
-    font-style: italic;
+    font-family: 'Lora', serif;
 }
 .homeCardTime{
     font-size: 0.75rem;
@@ -70,4 +71,25 @@
     -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
     color: #444444;
+}
+
+.read--more{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.read--more button{
+    border: #050505 solid 1px;
+    border-radius: 5px;
+    background-color: rgb(209, 227, 243);
+    width: 6vw;
+    height: 4vh;
+    font-size: 70%;
+}
+
+.read--more button:hover{
+    background-color: #3e92e0;
+    transition: 0.2s ease-in;
 }

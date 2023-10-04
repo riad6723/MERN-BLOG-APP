@@ -1,8 +1,11 @@
+
 .top{
     display: flex;
-    background-color: rgb(240, 239, 239);
-    height: 50px;
-    position: sticky;
+    background-color: rgb(245, 242, 242);
+    height: 6vh;
+    width: 100%;
+    position: fixed;
+    top: 0vh;
 }
 
 .topLeft, .topCenter, .topRight{
@@ -14,7 +17,7 @@
 }
 
 .topLeft> span{
-    font-size: 26px;
+    font-size: 1.5vw;
 }
 
 .topCenter{
@@ -22,37 +25,42 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-left: 10vw;
 }
 
-
-
 .navbarRoutes{
-    margin: 5px;
-    font-size: 20px;
-    position: relative;
-    left: 100px;
+    margin: 2%;
+    margin-right: 5vw;
+}
+
+.underline{
+    font-size: 1vw;
+}
+
+.underline:hover{
+    border-bottom: 2px solid rgb(44, 100, 163);
+    transition: 0.2s ease;
 }
 
 .navbarSearch{
-    position: relative;
-    left: 230px;
-    height: 25px;
+    height: 2.7vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .navbarIcon{
-    margin-left: 10px;
+    margin-left: 0.5vw;
     cursor: pointer;
 }
 
 .navbarSearchInput{
-    height: 30px;
-    width: auto;
+    height: inherit;
+    width: 10vw;
     background-color: whitesmoke;
     border: 1px solid black;
     border-radius: 8px;
+    font-size: 0.75vw;
 }
 
 .navbarSearchInput:hover{
@@ -62,25 +70,29 @@
 
 
 .navbarSearchResults{
-    background-color: #f0efef;
-    padding-left: 5px;
+    background-color: rgb(43, 140, 224);
     font-size: small;
     font-weight: 400;
     cursor: pointer;
-    position: relative;
-    width: 180px;
+    width: inherit;
+    display: flex;
+    height: 3vh;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .navbarSearchResultsBox{
-    position: relative;
-    width: 180px;
-    top: 43px;
-    left: 20px;
+    width: 10vw;
+    height: auto;
+    left: 55.8vw;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 5vh;
 }
 
 .topRight> span{
     margin: 5px;
-    font-size: 20px;
 }
 
 .navbarImg{

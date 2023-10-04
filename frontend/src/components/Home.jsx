@@ -24,7 +24,7 @@ function Home() {
         posts.map( (post, key) => (
         
       <div class="homeCard" key={key}>
-        <Link to={`/post/${post._id}`} className='home'>
+        <div className='home'>
             <img class="homeCardImage" src={`http://localhost:5000/Images/${post.file}`} alt='pic'/>
 
         <div class="homeCardContent">
@@ -35,7 +35,10 @@ function Home() {
           </div>
           <p className='homeCardDesc'>{post.description}</p>
         </div>
-        </Link>
+        <div className="read--more">
+          <Link to={`/post/${post._id}`}> <button>Read More...</button> </Link>
+        </div>
+        </div>
       </div>
         ))
       }

@@ -57,30 +57,37 @@ function Navbar() {
 
 
   return (
+  <div>
   <div className="top">
     <div className="topLeft">
       <span>Tech Blog</span>
     </div>
+
     <div className="topCenter">
     <div className="navbarRoutes">
-    <span><Link to="/">Home</Link></span>
-      { user? <span><Link to="/write">Write</Link></span> : <></>}
-      <span><Link to="/">Contact</Link></span>
+    <span className='underline'><Link to="/">Home</Link></span>
+      { user? <span className='underline'><Link to="/write">Write</Link></span> : <></>}
+      <span className='underline'><Link to="/">Contact</Link></span>
     </div> 
       <span className='navbarSearch'> <input className='navbarSearchInput' type="text" placeholder=' search authors....' value={searchKey} onChange={e=>{setSearchKey(e.target.value);handleSearch(e)}}/> <button onClick={handleSearch}> <i className='fa fa-search navbarIcon'> </i>  </button> </span>
-      
-      <div className='navbarSearchResultsBox'>
-        {
-          searchKeyResults.map((names,key)=>{
-          return  <div key={key} className='navbarSearchResults' onClick={() => handleSearchResultClick(names)}>{names.username}</div>
-          })
-        }</div>
     </div>
+
     <div className="topRight">
       {
-        user? (<> <span><Link to={`/profile?author=${user}`}><img className='navbarImg' src={`http://localhost:5000/Images/${profilePic}`} alt="" /></Link></span> <button onClick={handleClick}><span>Logout</span></button>  </>) : (<> <span><Link to="/register">Register</Link></span> <span><Link to="/login">Login</Link></span> </> )
+        user? (<> <span><Link to={`/profile?author=${user}`}><img className='navbarImg' src={`http://localhost:5000/Images/${profilePic}`} alt="" /></Link></span> <button onClick={handleClick}><span className='underline'>Logout</span></button>  </>) : (<> <span className='underline'><Link to="/register">Register</Link></span> <span className='underline'><Link to="/login">Login</Link></span> </> )
       }
     </div>
+  </div>
+
+   { <div className='navbarSearchResultsBox'>
+   {
+      searchKeyResults.map((names,key)=>{
+       return  <div key={key} className='navbarSearchResults' onClick={() => handleSearchResultClick(names)}>{names.username}</div>
+      })
+   }  
+     </div> 
+   }
+
   </div>
   )
 }
