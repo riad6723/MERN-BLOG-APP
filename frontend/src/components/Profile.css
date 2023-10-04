@@ -1,72 +1,97 @@
 .profile{
     width: 100%;
-    height: 100vh;
+    height: auto;
     display: flex;
     flex-direction: column;
+    padding: 5vw;
+    justify-content: center;
+    align-items: center;
 }
 
 .profileTop{
-    width: 100%;
+    width: 60vw;
     height: 40vh;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 0vw 15vw;
+    justify-content: center;
 }
 
 .profileCard{
-    width: 100%;
-    height: 40vh;
+    width: 60%;
+    height: 25vh;
     background-color: rgb(243, 243, 248);
     display: flex;
     border: 1px solid rgb(12, 12, 12);
+    border-radius: 2vw;
+    padding: 1vw;
+}
+
+.profile--image--div{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .profilePic{
-    width: 30%;
-    height: inherit;
-    border-bottom: 1px solid rgb(12, 12, 12);
+    width: 60%;
+    height: 70%;
+    border-radius: 5vw;
+    object-fit: cover;
 }
 
 .profileDesc{
-    width: 70%;
-    height: inherit;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    width: 45%;
+    height: 100%;
 }
 
-.profileName, .profileBlogs, .profileSomething {
-    height: 5%;
+.profileName, .profileBlogs, .profilePopularity {
     width: 100%;
+    height: auto;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
 }
 
 .profileName{
-    font-size: larger;
-    font-weight: 600;
+    font-size: 2vw;
+    font-weight: 900;
     font-style: italic;
+    margin-bottom: 2vh;
 }
 
-.profileBlogs{
-    font-size: medium;
+.profileBlogs, .profilePopularity, .profileFollowers{
+    font-size: 0.75vw;
     font-weight: 400;
 }
 
-.profileSomething{
-    font-size: small;
-    font-weight: 300;
+.profile--card--button{
+    width: 4vw;
+    height: auto;
+    padding: 0.5vw;
+}
+
+.profile--card--button button{
+    border-radius: 0.5vw;
+    height: auto;
+    width: auto;
+    padding: 0.55vw;
+    background-color: #00A3FF;
+    color: white;
+    font-size: 0.75vw;
+}
+
+.profile--card--button button:hover{
+    background-color: #0675b6;
+    transition: 0.3s ease-in;
 }
 
 .profileBottom{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    margin-top: 100px;
+    justify-content: space-around;
+    margin-top: 7vh;
 }
 
 .profileTime{
@@ -127,15 +152,15 @@
 }
 
 .profilePostDesc{
-    font-size: medium;
+    font-size: 0.8vw;
     font-weight: 500;
     overflow: hidden; /* Hide any overflowing content */
     text-overflow: ellipsis;
     text-align: justify;
     display: -webkit-box;
-    line-height: 1.5; /* Adjust line height for readability */
+    line-height: 1.2; /* Adjust line height for readability */
     -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
     color: #444444;
-    margin: 5px;
+    padding: 0 1vh;
 }

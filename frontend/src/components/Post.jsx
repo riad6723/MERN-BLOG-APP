@@ -35,29 +35,6 @@ function Post() {
   return (
 
     <div className="post--page">
-
-
-      {/*
-    <div className="postPage">
-
-      <div className="post">
-      <div className="postLeft">
-      <img src={`http://localhost:5000/Images/${post.file}`} alt="pic" className="postImage"/>
-      </div>
-     <div className="postContent">
-         <div className='postTop'>
-            <p className='postTitle'>{post.title}</p>
-            <p className='postAuthor'> <Link to={`/profile?author=${post.author}`}>{post.author}</Link></p>
-            <p className='postTime'>{moment(post.createdAt).fromNow()}</p>
-            
-          </div>
-
-          <p className='postDesc'>{post.description}</p>
-     </div>
-
-    </div>
-    </div>*/
-    }
       
       <div className="post--top">
       <div className="icon--box">

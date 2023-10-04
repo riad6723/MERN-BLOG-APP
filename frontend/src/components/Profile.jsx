@@ -36,12 +36,18 @@ function Profile() {
     <div className='profile'>
         <div className="profileTop">
           <div className="profileCard">
-            <img className="profilePic" src={"http://localhost:5000/Images/"+profilePic} alt='pic'/>
+           <div className="profile--image--div">
+           <img className="profilePic" src={"http://localhost:5000/Images/"+profilePic} alt='pic'/>
+           </div>
             <div className="profileDesc">
-              <h6 className="profileName">{author}</h6>
-              <h6 className="profileBlogs">{`Author of ${posts.length} blogs`}</h6>
-              <h6 className="profileSomething">Popularity 14</h6>
+              <div className="profileName">{author}</div>
+              <div className="profileBlogs">{`Blogs : ${posts.length}`}</div>
+              <div className="profilePopularity">Popularity : 14</div>
+              <div className="profileFollowers">Followers : 14</div>
             </div>
+              <div className="profile--card--button">
+                <button>Follow</button>
+              </div>
           </div>
         </div>
 
