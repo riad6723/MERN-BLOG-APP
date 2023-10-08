@@ -88,7 +88,7 @@ function Profile() {
               <div className="profileFollowers">Followers : {followerCount}</div>
             </div>
             {
-              author && author===localStorage.getItem('loggedinUsername')? null : 
+              (author && author===localStorage.getItem('loggedinUsername')) || !localStorage.getItem('loggedinUsername') ? null : 
               <div className="profile--card--button">
               {
                 showFollow && showFollow? <button onClick={handleFollow}>Follow</button> : <button onClick={handleUnfollow}>Unfollow</button>
