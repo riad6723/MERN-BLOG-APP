@@ -20,7 +20,11 @@ function Register() {
     formData.append('file', file)
 
     axios.post('http://localhost:5000/api/user/register', formData)
-    .then(res => history.push ('/login'))
+    .then(res => {
+      axios.post('http://localhost:5000/api/user/addtofollowerstable',{username})
+      .then(response=>history.push ('/login'))
+      .catch(err=>console.log(err))
+    })
     .catch(err => console.log(err))
   }
 

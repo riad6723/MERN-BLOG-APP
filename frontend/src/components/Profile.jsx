@@ -10,6 +10,8 @@ function Profile() {
   const[posts , setPosts]= useState([]);
   const [author, setAuthor]=useState();
   const [profilePic, setProfilePic]=useState();
+  const [followerCount,setFollowerCount]=useState(0);
+  const [showFollow, setShowFollow]=useState(true);
   const location = useLocation();
   
   useEffect(() => {
@@ -26,11 +28,51 @@ function Profile() {
       token:localStorage.getItem('token')
     }})
     .then(result => {
-      setPosts(result.data)
+      setPosts(result.data);
     })
     .catch(err => console.log(err))
 
+    axios.post('http://localhost:5000/api/find/followercount',{author:queryParams.get('author')})
+    .then(response=>setFollowerCount(response.data))
+    .catch(err=>console.log(err))
+
+    author && axios.post('http://localhost:5000/api/find/checkfollower',{follower:localStorage.getItem('loggedinUsername'),following:author})
+    .then(response=> setShowFollow(!response.data.message))
+    .catch(err=>console.log(err))
+
   },[location])
+
+  const handleFollow = ()=>{
+    const follower=localStorage.getItem('loggedinUsername');
+    if(author && follower===author)return;
+    
+    author && axios.post('http://localhost:5000/api/user/addfollower',{follower,following:author},{headers:{
+      token:localStorage.getItem('token')
+    }})
+    .then(response=>{
+      setFollowerCount(response.data.followerCount);
+      axios.post('http://localhost:5000/api/find/checkfollower',{follower:localStorage.getItem('loggedinUsername'),following:author})
+      .then(resp=> setShowFollow(!resp.data.message))
+      .catch(err=>console.log(err))
+    })
+    .catch(err=>console.log(err))
+  }
+
+  const handleUnfollow=()=>{
+    const follower=localStorage.getItem('loggedinUsername');
+    if(author && follower===author)return;
+
+    author && axios.post('http://localhost:5000/api/user/deletefollower',{follower,following:author},{headers:{
+      token:localStorage.getItem('token')
+    }})
+    .then(response=>{
+      setFollowerCount(response.data.followerCount);
+      axios.post('http://localhost:5000/api/find/checkfollower',{follower:localStorage.getItem('loggedinUsername'),following:author})
+      .then(resp=> setShowFollow(!resp.data.message))
+      .catch(err=>console.log(err))
+    })
+    .catch(err=>console.log(err))
+  }
 
   return (
     <div className='profile'>
@@ -42,12 +84,17 @@ function Profile() {
             <div className="profileDesc">
               <div className="profileName">{author}</div>
               <div className="profileBlogs">{`Blogs : ${posts.length}`}</div>
-              <div className="profilePopularity">Popularity : 14</div>
-              <div className="profileFollowers">Followers : 14</div>
+              <div className="profilePopularity">Popularity : 12k</div>
+              <div className="profileFollowers">Followers : {followerCount}</div>
             </div>
+            {
+              author && author===localStorage.getItem('loggedinUsername')? null : 
               <div className="profile--card--button">
-                <button>Follow</button>
+              {
+                showFollow && showFollow? <button onClick={handleFollow}>Follow</button> : <button onClick={handleUnfollow}>Unfollow</button>
+              }
               </div>
+            }
           </div>
         </div>
 

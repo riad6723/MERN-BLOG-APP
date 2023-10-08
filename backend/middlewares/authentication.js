@@ -1,6 +1,4 @@
 const jwt=require('jsonwebtoken')
-const UserModel = require('../models/userModel')
-const PostModel = require('../models/postModel');
 const userModel = require('../models/userModel');
 
 const checkToken= (req,res,next)=>{
@@ -20,7 +18,6 @@ const checkToken= (req,res,next)=>{
     } catch (err) {
         return res.status(401).json({ message: 'Unauthorized: Invalid token' });
     }
-   
 }
 
 const checkUser= (req,res,next)=>{

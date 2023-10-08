@@ -57,7 +57,7 @@ function Navbar() {
 
 
   return (
-  <div>
+  <div className='navbar--result--container'>
   <div className="top">
     <div className="topLeft">
       <span>Tech Blog</span>

@@ -47,7 +47,7 @@ function Post() {
 
       <div className="post--mid">
         <h1 className="title">{post.title}</h1>
-        <h1 className='author'> <Link to={`/profile?author=${post.author}`}>By {post.author}</Link></h1>
+        <h1 className='author'> <Link to={`/profile?author=${post.author}`}>@{post.author}</Link></h1>
         <h1 className="time">{moment(post.createdAt).fromNow()}</h1>
       </div>
 

@@ -1,6 +1,6 @@
 const UserModel = require('../models/userModel')
 const PostModel = require('../models/postModel')
-
+const FollowerModel =require('../models/followerModel')
 
 const searchKey=(req,res)=>{
     const {username}= req.body;
@@ -40,7 +40,9 @@ const getUsernameFromEmail=(req,res)=>{
 const getPostsForAuthor= (req, res) => {
     const { author } = req.body;
     PostModel.find({ author: author })
-      .then(result => res.json(result))
+      .then(result => {
+        res.status(200).json(result);
+      })
       .catch(err => res.json(err))
 }
 
@@ -57,4 +59,26 @@ const deletepost=(req, res) => {
     .catch(err => res.json(err))
   }
 
-  module.exports={searchKey, profilePic,getposts, getUsernameFromEmail,getPostsForAuthor, getPostById,deletepost};
+const getFollowerCount=(req,res)=>{
+  const {author}=req.body;
+  FollowerModel.findOne({following:author})
+  .then(result=>{
+    if(result.followers)res.status(200).json(result.followers.length);
+    else res.status(200).json(0);
+  })
+  .catch(err=>res.json(err))
+}
+
+const checkfollower=(req,res)=>{
+  const {following, follower}=req.body;
+  FollowerModel.findOne({following})
+  .then(result=>{
+    for(let i=0;i<result.followers.length;i++){
+      if(result.followers[i]===follower)return res.status(200).json({message:true});
+    }
+    return res.status(200).json({message:false})
+  })
+  .catch(err=>res.json(err))
+}
+
+  module.exports={searchKey, profilePic,getposts, getUsernameFromEmail,getPostsForAuthor, getPostById,deletepost,getFollowerCount, checkfollower};

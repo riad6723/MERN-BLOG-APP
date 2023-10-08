@@ -1,11 +1,16 @@
 
-.top{
-    display: flex;
-    background-color: rgb(245, 242, 242);
-    height: 6vh;
+.navbar--result--container{
     width: 100%;
+    height: auto;
     position: fixed;
     top: 0vh;
+}
+
+.top{
+    display: flex;
+    background-color: hsl(195, 5%, 83%);
+    height: 6vh;
+    width: 100%;
 }
 
 .topLeft, .topCenter, .topRight{
@@ -38,20 +43,20 @@
 }
 
 .underline:hover{
-    border-bottom: 2px solid rgb(44, 100, 163);
+    border-bottom: 2px solid rgb(27, 121, 228);
     transition: 0.2s ease;
 }
 
 .navbarSearch{
-    height: 2.7vh;
+    height: 2.9vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .navbarIcon{
-    margin-left: 0.5vw;
     cursor: pointer;
+    width: 2vw;
 }
 
 .navbarSearchInput{
@@ -70,25 +75,24 @@
 
 
 .navbarSearchResults{
-    background-color: rgb(43, 140, 224);
+    background-color: hsl(192, 59%, 29%);
     font-size: small;
     font-weight: 400;
     cursor: pointer;
-    width: inherit;
+    width: 10vw;
     display: flex;
     height: 3vh;
     align-items: center;
     justify-content: flex-start;
+    margin-left: 57vw;
 }
 
 .navbarSearchResultsBox{
-    width: 10vw;
+    width: 100%;
     height: auto;
-    left: 55.8vw;
+    left: 56.9vw;
     display: flex;
     flex-direction: column;
-    position: fixed;
-    top: 5vh;
 }
 
 .topRight> span{
