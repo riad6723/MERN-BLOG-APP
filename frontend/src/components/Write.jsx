@@ -1,8 +1,7 @@
-
-import React from "react";
 import './Write.css'
 import axios from "axios";
 import { useState } from "react";
+import { toast} from 'react-toastify';
 
 function Write() {
 
@@ -23,6 +22,7 @@ function Write() {
       .then(res => {
           if(res.data === "Success") {
               window.location.href = "/"
+              toast('post created');
           }
       })
       .catch(err => console.log(err))

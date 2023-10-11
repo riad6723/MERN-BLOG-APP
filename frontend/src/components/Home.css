@@ -1,15 +1,17 @@
+
 .home{
     height: auto;
     width: 100%;
-    padding: 70px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    padding: 10vh 1vw;
+     display: grid;
+    grid-template-columns: repeat(4,1fr); 
+}
+body::-webkit-scrollbar{
+    display: none;
 }
 
 .homeCard{
-    width: 400px;
-    /* height: 550px; */
+    width: 90%;
     height: auto;
     background-color: #f7f7f7;
     border: 1px solid rgb(219, 219, 219);
@@ -17,7 +19,7 @@
     flex-direction: column;
     border-radius: 4px;
     box-shadow: 3px 3px 5px #666565, 0px 0px 0px #ffffff;
-    margin: 20px;
+    margin: 2vh 0;
 }
 
 .homeCard:hover {
@@ -25,8 +27,8 @@
 }
 
 .homeCardImage{
-    height: 200px;
-    width: inherit;
+    height: 20vh;
+    width: 100%;
     object-fit: cover;
 }
 
@@ -61,16 +63,16 @@
 }
 
 .homeCardDesc{
-    font-size: medium;
+    font-size: 2vh;
     font-weight: 500;
     overflow: hidden; /* Hide any overflowing content */
     text-overflow: ellipsis;
-    text-align: justify;
     display: -webkit-box;
     line-height: 1.5; /* Adjust line height for readability */
     -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
     color: #444444;
+    margin: 1vh;
 }
 
 .read--more{
@@ -78,6 +80,7 @@
     height: auto;
     display: flex;
     justify-content: center;
+    margin: 4vh 0;
 }
 
 .read--more button{

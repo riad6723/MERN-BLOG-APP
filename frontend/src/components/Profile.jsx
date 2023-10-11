@@ -4,6 +4,7 @@ import { useLocation, Link } from 'react-router-dom';
 import  { useEffect, useState } from "react";
 import axios from "axios";
 import moment from 'moment';
+import { toast} from 'react-toastify';
 
 function Profile() {
   
@@ -36,11 +37,11 @@ function Profile() {
     .then(response=>setFollowerCount(response.data))
     .catch(err=>console.log(err))
 
-    author && axios.post('http://localhost:5000/api/find/checkfollower',{follower:localStorage.getItem('loggedinUsername'),following:author})
+    author && axios.post('http://localhost:5000/api/find/checkfollower',{follower:localStorage.getItem('loggedinUsername'),following:queryParams.get('author')})
     .then(response=> setShowFollow(!response.data.message))
     .catch(err=>console.log(err))
 
-  },[location])
+  },[location, showFollow])
 
   const handleFollow = ()=>{
     const follower=localStorage.getItem('loggedinUsername');
@@ -51,9 +52,8 @@ function Profile() {
     }})
     .then(response=>{
       setFollowerCount(response.data.followerCount);
-      axios.post('http://localhost:5000/api/find/checkfollower',{follower:localStorage.getItem('loggedinUsername'),following:author})
-      .then(resp=> setShowFollow(!resp.data.message))
-      .catch(err=>console.log(err))
+      setShowFollow(prev=>!prev)
+      toast.success(`following ${author}`);
     })
     .catch(err=>console.log(err))
   }
@@ -67,9 +67,8 @@ function Profile() {
     }})
     .then(response=>{
       setFollowerCount(response.data.followerCount);
-      axios.post('http://localhost:5000/api/find/checkfollower',{follower:localStorage.getItem('loggedinUsername'),following:author})
-      .then(resp=> setShowFollow(!resp.data.message))
-      .catch(err=>console.log(err))
+      setShowFollow(prev=>!prev)
+      toast.success(`unfollowing ${author}`);
     })
     .catch(err=>console.log(err))
   }
@@ -111,7 +110,7 @@ function Profile() {
           <div class="profilePostContent">
             <div className='profilePostTop'>
               <p className='profilePostTitle'>{post.title}</p>
-              <p className='profilePostAuthor'>{post.author}</p>
+              <p className='profilePostAuthor'>@{post.author}</p>
               <p className='profileTime'>{moment(post.createdAt).fromNow()}</p>
             </div>
 

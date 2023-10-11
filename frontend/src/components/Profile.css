@@ -6,6 +6,7 @@
     padding: 5vw;
     justify-content: center;
     align-items: center;
+    overflow: auto;
 }
 
 .profileTop{
@@ -88,26 +89,24 @@
 
 .profileBottom{
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
     margin-top: 7vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1vw 0;
 }
 
 .profileTime{
     position: relative;
     top: -65px;
     left: 110px;
-    font-size: 0.5rem;
+    font-size: 0.7rem;
     font-weight: 400;
 }
 
 
 .profilePost{
-    width: 300px;
-    height: 400px;
-    margin: 0px;
-    margin-bottom: 50px;
+    width: 90%;
+    height: auto;
     background-color: #f7f7f7;
     border: 1px solid rgb(219, 219, 219);
     display: flex;
@@ -122,8 +121,8 @@
 
 
 .profilePostImage{
-    height: 150px;
-    width: inherit;
+    height: 20vh;
+    width: 100%;
     object-fit: cover;
 }
 
@@ -136,17 +135,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100px;
+    height: 10vh;
 }
 
 .profilePostTitle{
     font-size: 1rem;
     font-weight: 600;
-    margin-top: 2px;
+    margin-top: 2vh;
 }
 
 .profilePostAuthor{
-    font-size: 10px;
+    font-size: 1.2vh;
     font-weight: 400;
     font-style: italic;
 }
@@ -156,10 +155,9 @@
     font-weight: 500;
     overflow: hidden; /* Hide any overflowing content */
     text-overflow: ellipsis;
-    text-align: justify;
     display: -webkit-box;
-    line-height: 1.2; /* Adjust line height for readability */
-    -webkit-line-clamp: 6;
+    line-height: 1.5; /* Adjust line height for readability */
+    -webkit-line-clamp: 9;
     -webkit-box-orient: vertical;
     color: #444444;
     padding: 0 1vh;

@@ -2,6 +2,7 @@ import {useParams, useHistory } from 'react-router-dom'
 import './Write.css'
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { toast} from 'react-toastify';
 
 function Update() {
 
@@ -35,10 +36,13 @@ function Update() {
       formData.append('username', user)
       formData.append('file', file)
 
-      axios.put('http://localhost:5000/api/user/editpost/'+id, formData)
+      axios.put('http://localhost:5000/api/user/editpost/'+id, formData,{headers:{
+        token:localStorage.getItem('token')
+      }})
       .then(res => {
           if(res.data === "Success") {
-              window.location.href = "/"
+            window.location.href = "/"
+            toast('post updated');
           }
       })
       .catch(err => console.log(err))
